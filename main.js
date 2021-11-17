@@ -7,7 +7,6 @@ const API_KEY = process.env.API_KEY;
 const formEle = document.getElementById('weatherForm'); 
 const query = document.getElementById('inputEle');
 
-// console.log(query.value);
 
 const parentDiv = document.getElementById('mainContent'); 
 let paragraphElement = document.createElement('p'); 
@@ -68,11 +67,3 @@ const clearWeather = () => {
 const setMessage = (msg) => {
         errorMsg.textContent = msg; 
     }
-
-// const changeColor =(temp) =>  {
-//     if (temp > 90) {
-//         temp.style.color = 'red'; 
-//     } else if (temp < 40) {
-//         temp.style.color = 'blue'
-//     }
-// }
