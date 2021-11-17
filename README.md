@@ -10,6 +10,7 @@ git clone git@github.com:hydeiablakey/Week-6-Project.git
 yarn 
 yarn start 
 ```
+- Afterwards you should be able to test the application at localhost:1234
 
 # Built With
 
