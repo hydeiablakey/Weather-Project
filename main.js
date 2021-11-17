@@ -15,25 +15,28 @@ paragraphElement.setAttribute('id', 'display');
 let errorMsg = document.createElement('p');  
 
 
+
 formEle.addEventListener('submit', async function (event) {
     event.preventDefault(); 
     try {
-        let response = await axios.get(`${BASE_URL}${query.value}&appid=${API_KEY}`)
+        let response = await axios.get(`${BASE_URL}${query.value}&appid=${API_KEY}&units=imperial`)
         clearWeather(); 
+        let currentTemp = Math.floor(response.data.main.temp); 
+        let weatherDesc = response.data.weather[0].description;
+        let minTemp = Math.floor(response.data.main.temp_min);
+        let maxTemp = Math.floor(response.data.main.temp_max); 
+
+
         paragraphElement.innerHTML = `City Name: ${response.data.name}
-        <br> Current Temperature: ${response.data.main.temp} <br> Weather Description: ${response.data.weather[0].description} 
-        <br> Min Temperature:${response.data.main.temp_min} <br> Max temperature: ${response.data.main.temp_max} `
+        <br> Current Temperature: ${currentTemp}°F <br> Weather Description: ${weatherDesc} 
+        <br> Min Temperature: ${minTemp}°F <br> Max temperature: ${maxTemp}°F `
+
         parentDiv.appendChild(paragraphElement); 
         console.log(response);
-
-        // console.log(response.data.name); 
-        // console.log(response.data.weather[0].main); 
-        // console.log(response.data.weather[0].description); 
-        // console.log(response.data.main.temp_min);
-        // console.log(response.data.main.temp_max); 
+        
     } catch(err) {
         parentDiv.appendChild(errorMsg);
-        setMessage("There has been an error finding your query. Please try again."); 
+        setMessage("There has been an error locating your city or zipcode. Please try again."); 
         console.log(err); 
     }
 
@@ -50,3 +53,11 @@ const clearWeather = () => {
 const setMessage = (msg) => {
         errorMsg.textContent = msg; 
     }
+
+// const changeColor =(temp) =>  {
+//     if (temp > 90) {
+//         temp.style.color = 'red'; 
+//     } else if (temp < 40) {
+//         temp.style.color = 'blue'
+//     }
+// }
