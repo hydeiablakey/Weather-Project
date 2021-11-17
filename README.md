@@ -1,6 +1,6 @@
 # About the Project
 
-- This Weather form application I created using the **Open Weather Map API.**
+- This is a Weather form application I created using the **Open Weather Map API.**
 
 # Getting Started
 - This project can be accessed by cloning the github repository onto your desktop and following the steps below. 
