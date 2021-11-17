@@ -3,7 +3,32 @@
     margin-top: 20px;
 }
 
+body {
+    background-image: url('cloud.jpg');
+    background-size: cover;
+}
+  
+
 #display {
-    margin: 5px; 
+    margin: 20px; 
     font-size: 2em;
+    border: 3px solid #F38BA0; 
+    background-color: #FFBCBC;
+
+
+  
+}
+
+.labelForm {
+    font-family: 'Roboto', 'sans-serif';
+    font-size: 35px;
+    font-weight:bold;
+    padding-bottom: 10px;
+
+}
+
+#submitEle {
+    background-color: #B5EAEA;
+    border-bottom: 2px solid black;
+
 }

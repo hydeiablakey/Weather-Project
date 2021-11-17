@@ -11,6 +11,7 @@ const query = document.getElementById('inputEle');
 
 const parentDiv = document.getElementById('mainContent'); 
 let paragraphElement = document.createElement('p'); 
+let temp = document.createElement('p'); 
 paragraphElement.setAttribute('id', 'display');
 let errorMsg = document.createElement('p');  
 
@@ -26,10 +27,24 @@ formEle.addEventListener('submit', async function (event) {
         let minTemp = Math.floor(response.data.main.temp_min);
         let maxTemp = Math.floor(response.data.main.temp_max); 
 
+        if (currentTemp > 90) {
+            temp.textContent = `The current temperature of ${Math.floor(response.data.main.temp)}°F is pretty hot. Dress warmly! `
+            temp.style.color ='red'; 
+            temp.style.fontSize = '20px';
+            parentDiv.appendChild(temp); 
+        } else if (currentTemp < 40) {
+            temp.textContent = `The current temperature of ${Math.floor(response.data.main.temp)}°F is pretty cold. Bundle up!`
+            temp.style.color = 'blue'
+            temp.style.fontSize = '20px';
+            parentDiv.appendChild(temp);
+        }
+
 
         paragraphElement.innerHTML = `City Name: ${response.data.name}
         <br> Current Temperature: ${currentTemp}°F <br> Weather Description: ${weatherDesc} 
         <br> Min Temperature: ${minTemp}°F <br> Max temperature: ${maxTemp}°F `
+
+        
 
         parentDiv.appendChild(paragraphElement); 
         console.log(response);
